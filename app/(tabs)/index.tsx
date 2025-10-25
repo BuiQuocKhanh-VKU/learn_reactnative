@@ -1,14 +1,22 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
+   const [count, setCount] = useState<number>(0);
+   const [test, setTest] = useState({ name: "Vy", age: 18 });
    return (
       <View style={styles.container}>
          <View>
-            <Text style={styles.header}>Hoi cai qq</Text>
+            <Text style={styles.header}>
+               {test.name} Hoi cai qq count = {count}
+            </Text>
          </View>
-         <Text style={styles.hello1}>I am Khanh!</Text>
+
          <StatusBar style="auto" />
+         <View>
+            <Button color={"green"} title="Increase" onPress={() => setCount(count + 1)} />
+         </View>
       </View>
    );
 }
@@ -20,6 +28,5 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
    },
-   hello1: { color: "red", fontSize: 60, borderBottomWidth: 12, borderColor: "green", padding: 10 },
-   header: {fontSize: 30, fontWeight: "bold"},
+   header: { fontSize: 30, fontWeight: "bold" },
 });

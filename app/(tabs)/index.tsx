@@ -1,21 +1,42 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
    const [count, setCount] = useState<number>(0);
-   const [test, setTest] = useState({ name: "Vy", age: 18 });
+   const [name, setName] = useState<string>("");
+   const [age, setAge] = useState<number>(0);
+
    return (
       <View style={styles.container}>
          <View>
-            <Text style={styles.header}>
-               {test.name} Hoi cai qq count = {count}
-            </Text>
+            <Text style={{ fontSize: 40, fontWeight: "bold" }}>Name: {name}</Text>
+            <TextInput
+               multiline
+               onChangeText={(value) => setName(value)}
+               style={{ borderColor: "green", borderWidth: 1, width: 200, padding: 15 }}
+            ></TextInput>
+
+            <Text> count = {count}</Text>
+
+            <View>
+               <Button color={"green"} title="Increase" onPress={() => setCount(count + 1)} />
+            </View>
          </View>
 
-         <StatusBar style="auto" />
          <View>
-            <Button color={"green"} title="Increase" onPress={() => setCount(count + 1)} />
+            <Text style={{ fontSize: 40, fontWeight: "bold" }}>Age: {age}</Text>
+            <TextInput
+               onChangeText={(value) => setAge(+value)}
+               style={{ borderColor: "green", borderWidth: 1, width: 200, padding: 15 }}
+               keyboardType="numeric"
+               maxLength={2}
+            ></TextInput>
+
+            <Text> count = {count}</Text>
+
+            <View>
+               <Button color={"green"} title="Increase" onPress={() => setCount(count + 1)} />
+            </View>
          </View>
       </View>
    );
@@ -28,5 +49,4 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
    },
-   header: { fontSize: 30, fontWeight: "bold" },
 });

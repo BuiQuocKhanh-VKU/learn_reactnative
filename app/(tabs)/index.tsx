@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button, FlatList, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, FlatList, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { opacity } from "react-native-reanimated/lib/typescript/Colors";
 
 interface ITodo {
    id: number;
@@ -7,7 +8,7 @@ interface ITodo {
 }
 
 export default function App() {
-   const [test, setTest] = useState({ name: "Todo's", age: 18 });
+   const [test, setTest] = useState({ name: "Khanh's", age: 18 });
    const [todo, setTodo] = useState("");
    const [listTodo, setListTodo] = useState<ITodo[]>([]);
 
@@ -16,15 +17,23 @@ export default function App() {
    }
 
    const handleAddTodo = () => {
-      if (!todo) return;
+      if (!todo) {
+         alert("empty todo!");
+         return;
+      }
       setListTodo([...listTodo, { id: randomInteger(2, 2000), name: todo }]);
       setTodo("");
+   };
+
+   const deleteTodo = (id: number) => {
+      const newTodos = listTodo.filter((item) => item.id !== id);
+      setListTodo(newTodos);
    };
 
    return (
       <View style={styles.container}>
          {/* Header */}
-         <Text style={styles.header}>{test.name} Khanh</Text>
+         <Text style={styles.header}>{test.name} Todo</Text>
 
          {/* form */}
          <View style={styles.body}>
@@ -38,9 +47,16 @@ export default function App() {
          <View style={styles.body}>
             <FlatList
                data={listTodo}
-               keyExtractor={item => item.id + ""}
+               keyExtractor={(item) => item.id + ""}
                renderItem={({ item }) => {
-                  return <Text style={styles.todoItem}>{item.name}</Text>;
+                  return (
+                     <Pressable 
+                     onPress={() => deleteTodo(item.id)}
+                     style={({pressed}) => ({opacity: pressed ? 0.5 :1})}
+                     >
+                        <Text style={styles.todoItem}>{item.name}</Text>;
+                     </Pressable>
+                  );
                }}
             />
             {/* <Text> {JSON.stringify(listTodo)}</Text> */}

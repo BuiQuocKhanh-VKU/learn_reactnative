@@ -1,3 +1,4 @@
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { useState } from "react";
 import {
    Alert,
@@ -57,15 +58,13 @@ export default function App() {
             <Text style={styles.header}>{test.name} Todo</Text>
 
             {/* form */}
-            <View style={styles.body}>
+            <View style={styles.form}>
                <TextInput value={todo} style={styles.todoInput} onChangeText={(value) => setTodo(value)} />
                <Button title="Add todo" onPress={handleAddTodo} />
-
-               <Text> Form</Text>
             </View>
 
             {/* list todo */}
-            <View style={styles.body}>
+            <View style={styles.todo}>
                <FlatList
                   data={listTodo}
                   keyExtractor={(item) => item.id + ""}
@@ -75,7 +74,10 @@ export default function App() {
                            onPress={() => deleteTodo(item.id)}
                            style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1 })}
                         >
-                           <Text style={styles.todoItem}>{item.name}</Text>
+                           <View style={styles.groupTodo}>
+                              <Text style={styles.todoItem}>{item.name}</Text>
+                              <AntDesign name="close-circle" size={24} color="black" />
+                           </View>
                         </Pressable>
                      );
                   }}
@@ -89,12 +91,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-   header: {
-      backgroundColor: "orange",
-      paddingHorizontal: 20,
-      textAlign: "center",
-      fontSize: 30,
-   },
    container: {
       flex: 1,
       paddingTop: 50,
@@ -102,13 +98,32 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor: "red",
    },
-
-   todoItem: {
-      fontSize: 30,
+   header: {
+      backgroundColor: "orange",
+      paddingHorizontal: 20,
+      textAlign: "center",
+      fontSize: 40,
+      flex: 1,
+   },
+   form: {
+      marginBottom: 20
+   },
+   todo: {
+      flex: 8,
+   },
+   groupTodo: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent:"space-between",
       borderWidth: 1,
       borderStyle: "dashed",
-      marginBottom: 20,
-      padding: 10,
+      marginBottom: 15,
+      padding: 15,
+      marginHorizontal: 10,
+   },
+   todoItem: {
+      fontSize: 20,
+      // padding: 10,
    },
    todoInput: {
       borderBottomWidth: 1,

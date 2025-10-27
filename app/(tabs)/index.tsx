@@ -1,6 +1,5 @@
 import { useState } from "react";
-import {  ScrollView, StyleSheet, Text, View } from "react-native";
-
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
    const [students, setStudents] = useState([
@@ -16,7 +15,26 @@ export default function App() {
    return (
       <View style={styles.container}>
          <Text style={{ fontSize: 60 }}>Anh iu em {test.name}</Text>
-         <ScrollView>
+         <FlatList
+            data={students}
+      
+            keyExtractor={item => item.id + ""}
+            renderItem={({ item }) => {
+               return (
+                  <View
+                     style={{
+                        padding: 30,
+                        backgroundColor: "pink",
+                        marginBottom: 30,
+                        marginHorizontal: 30
+                     }}
+                  >
+                     <Text> {item.name} </Text>
+                  </View>
+               );
+            }}
+         />
+         {/* <ScrollView>
             {students.map((item) => {
                return (
                   <View
@@ -31,7 +49,7 @@ export default function App() {
                   </View>
                );
             })}
-         </ScrollView>
+         </ScrollView> */}
       </View>
    );
 }

@@ -46,12 +46,12 @@ export default function App() {
    };
 
    const deleteTodo = (id: number) => {
-      const newTodos = listTodo.filter((item) => item.id !== id);
-      setListTodo(newTodos);
+      // const newTodos = listTodo.filter((item) => item.id !== id);
+      // setListTodo(newTodos);
    };
 
    return (
-      <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
          <View style={styles.container}>
             {/* Header */}
             <Text style={styles.header}>{test.name} Todo</Text>
@@ -84,6 +84,7 @@ export default function App() {
             </View>
          </View>
       </TouchableWithoutFeedback>
+      // <FlexBox />
    );
 }
 
@@ -98,8 +99,8 @@ const styles = StyleSheet.create({
       flex: 1,
       paddingTop: 50,
       backgroundColor: "#fff",
-      // alignItems: "center",
-      // justifyContent: "center",
+      borderWidth: 1,
+      borderColor: "red",
    },
 
    todoItem: {

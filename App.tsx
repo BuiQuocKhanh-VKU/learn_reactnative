@@ -7,9 +7,10 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import DetailScreen from "./components/review/detail";
 
+
 SplashScreen.preventAutoHideAsync();
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
    const [loaded, error] = useFonts({
@@ -25,8 +26,8 @@ export default function App() {
    return (
       <NavigationContainer>
          <Stack.Navigator>
-            <Stack.Screen name="Home ne he" component={HomeScreen} options={{ title: "Overview" }} />
-            <Stack.Screen name="Detail" component={DetailScreen} />
+            <Stack.Screen name="home" component={HomeScreen} options={{ title: "Overview" }} />
+            <Stack.Screen name="detail" component={DetailScreen} />
          </Stack.Navigator>
       </NavigationContainer>
    );

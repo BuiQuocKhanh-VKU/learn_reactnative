@@ -1,5 +1,6 @@
 import { OPENSAN_REGULAR } from "@/utils/const";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     detail: {
@@ -8,9 +9,12 @@ const styles = StyleSheet.create({
     }
 });
 const DetailScreen = () => {
+
+   const navigation: NavigationProp<ParamListBase> = useNavigation()
    return (
       <View>
          <Text style={styles.detail}>Detail Screen</Text>
+         <Button title="Go home" onPress={() => navigation.navigate("home")}/>
       </View>
    );
 };

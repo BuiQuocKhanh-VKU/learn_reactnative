@@ -3,6 +3,7 @@ import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/
 import { useState } from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+
 interface Ireview {
    id: number;
    title: string;

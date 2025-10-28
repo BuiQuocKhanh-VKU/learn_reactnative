@@ -1,8 +1,8 @@
 import { OPENSAN_REGULAR } from "@/utils/const";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import AppHeader from "../navigation/app.header";
+import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import CreateModal from "./create.modal";
 
 interface Ireview {
    id: number;
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
    home: {
       fontSize: 30,
       fontFamily: OPENSAN_REGULAR,
-      paddingLeft:15,
+      paddingLeft: 15,
    },
    reviewItem: {
       padding: 15,
@@ -32,9 +32,12 @@ const HomeScreen = (props: any) => {
       { id: 3, title: "react2", star: 5 },
    ]);
 
+   const [modalVisible, setModalVisible] = useState(false);
+
    return (
       <View>
          <Text style={styles.home}>Review list: {khanh.name}</Text>
+         <Button title="Add" onPress={ () => setModalVisible(true) }/>
          <View>
             <FlatList
                data={reviews}
@@ -50,6 +53,7 @@ const HomeScreen = (props: any) => {
                }}
             />
          </View>
+         <CreateModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
       </View>
    );
 };

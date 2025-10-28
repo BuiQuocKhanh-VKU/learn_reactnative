@@ -1,9 +1,10 @@
+import { OPENSAN_REGULAR } from "@/utils/const";
 import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
     detail: {
         fontSize: 30,
-        fontFamily: "KhanhFont",
+        fontFamily: OPENSAN_REGULAR,
     }
 });
 const DetailScreen = () => {

@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
    home: {
       fontSize: 30,
       fontFamily: OPENSAN_REGULAR,
+      paddingLeft:15,
    },
    reviewItem: {
       padding: 15,

@@ -1,5 +1,5 @@
 import { OPENSAN_REGULAR } from "@/utils/const";
-import { StyleSheet, Text, View } from "react-native"
+import { Button, StyleSheet, Text, View } from "react-native"
 
 const styles = StyleSheet.create({
     home: {
@@ -14,6 +14,7 @@ const HomeScreen = () => {
             <Text style={styles.home}>
                 Home Screen
             </Text>
+         <Button title="View detail"/>
         </View>
     )
 }

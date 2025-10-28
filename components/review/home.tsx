@@ -2,7 +2,7 @@ import { OPENSAN_REGULAR } from "@/utils/const";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
+import AppHeader from "../navigation/app.header";
 
 interface Ireview {
    id: number;
